@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState} from 'react';
+import {BsEye, BsEyeSlash} from "react-icons/bs";
 
 interface InputProps {
   id: string;
@@ -9,12 +10,13 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
+    const [isHidden, setIsHidden] = useState(true);
   return (
     <div className="relative">
       <input
         onChange={onChange}
         value={value}
-        type={type}
+        type={isHidden && type=="password" ? type : "text"}
         id={id}
         className="
         block
@@ -35,7 +37,7 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
         placeholder=" " 
       />
       <label 
-        htmlFor={id} 
+        htmlFor={id}
         className="
         absolute 
         text-md
@@ -53,6 +55,7 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
         peer-focus:scale-75
         peer-focus:-translate-y-3
       ">{label}</label>
+        {type == "password" && <span className="text-zinc-400 absolute top-5 z-10 right-4 cursor-pointer hover:text-zinc-300 hover:underline" onClick={()=>setIsHidden(!isHidden)}> {isHidden ? <BsEye/> : <BsEyeSlash />}</span>}
     </div>
   )
 }
