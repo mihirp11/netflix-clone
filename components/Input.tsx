@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
       <input
         onChange={onChange}
         value={value}
-        type={isHidden && type=="password" ? type : "text"}
+        type={!isHidden && type=="password" ? "text":  type }
         id={id}
         className="
         block
