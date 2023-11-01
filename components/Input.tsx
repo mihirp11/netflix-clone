@@ -55,7 +55,7 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
         peer-focus:scale-75
         peer-focus:-translate-y-3
       ">{label}</label>
-        {type == "password" && <span className="text-zinc-400 absolute top-5 z-10 right-4 cursor-pointer hover:text-zinc-300 hover:underline" onClick={()=>setIsHidden(!isHidden)}> {isHidden ? <BsEye/> : <BsEyeSlash />}</span>}
+        {type == "password" && value !="" && <span className="text-zinc-400 absolute top-5 z-10 right-4 cursor-pointer hover:text-zinc-300 hover:underline" onClick={()=>setIsHidden(!isHidden)}> {isHidden ? <BsEye/> : <BsEyeSlash />}</span>}
     </div>
   )
 }
